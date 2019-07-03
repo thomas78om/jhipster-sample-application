@@ -4,6 +4,18 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   imports: [
     RouterModule.forChild([
+      {
+        path: 'album',
+        loadChildren: './album/album.module#JhipsterSampleApplicationAlbumModule'
+      },
+      {
+        path: 'photo',
+        loadChildren: './photo/photo.module#JhipsterSampleApplicationPhotoModule'
+      },
+      {
+        path: 'tag',
+        loadChildren: './tag/tag.module#JhipsterSampleApplicationTagModule'
+      }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])
   ],
