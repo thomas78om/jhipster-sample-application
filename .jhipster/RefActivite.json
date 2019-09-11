@@ -1,0 +1,38 @@
+{
+    "name": "RefActivite",
+    "fields": [
+        {
+            "fieldName": "racCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "racLibCourt",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "racLibLong",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "racComm",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "acteGestionDelai",
+            "otherEntityRelationshipName": "refActivite",
+            "relationshipName": "acteGestionDelai"
+        }
+    ],
+    "changelogDate": "20190911115151",
+    "entityTableName": "ref_activite",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

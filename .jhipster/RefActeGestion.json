@@ -1,0 +1,38 @@
+{
+    "name": "RefActeGestion",
+    "fields": [
+        {
+            "fieldName": "ragCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ragLibCourt",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ragLibLong",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ragComm",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "acteGestionDelai",
+            "otherEntityRelationshipName": "refActeGestion",
+            "relationshipName": "acteGestionDelai"
+        }
+    ],
+    "changelogDate": "20190911115150",
+    "entityTableName": "ref_acte_gestion",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

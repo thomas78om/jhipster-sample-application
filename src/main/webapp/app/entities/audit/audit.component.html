@@ -1,0 +1,63 @@
+<div>
+    <h2 id="page-heading">
+        <span>Audits</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-audit" [routerLink]="['/audit/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create a new Audit
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="audits?.length === 0">
+        <span>No audits found</span>
+    </div>
+    <div class="table-responsive" *ngIf="audits?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Aud Id</span></th>
+            <th><span>Aud Utilisateur</span></th>
+            <th><span>Aud Description</span></th>
+            <th><span>Aud Datetime</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let audit of audits ;trackBy: trackId">
+                <td><a [routerLink]="['/audit', audit.id, 'view' ]">{{audit.id}}</a></td>
+                <td>{{audit.audId}}</td>
+                <td>{{audit.audUtilisateur}}</td>
+                <td>{{audit.audDescription}}</td>
+                <td>{{audit.audDatetime | date:'mediumDate'}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/audit', audit.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/audit', audit.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/audit', { outlets: { popup: audit.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

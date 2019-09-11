@@ -1,0 +1,63 @@
+<div>
+    <h2 id="page-heading">
+        <span>Ref Activites</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-ref-activite" [routerLink]="['/ref-activite/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create a new Ref Activite
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="refActivites?.length === 0">
+        <span>No refActivites found</span>
+    </div>
+    <div class="table-responsive" *ngIf="refActivites?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Rac Code</span></th>
+            <th><span>Rac Lib Court</span></th>
+            <th><span>Rac Lib Long</span></th>
+            <th><span>Rac Comm</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let refActivite of refActivites ;trackBy: trackId">
+                <td><a [routerLink]="['/ref-activite', refActivite.id, 'view' ]">{{refActivite.id}}</a></td>
+                <td>{{refActivite.racCode}}</td>
+                <td>{{refActivite.racLibCourt}}</td>
+                <td>{{refActivite.racLibLong}}</td>
+                <td>{{refActivite.racComm}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/ref-activite', refActivite.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/ref-activite', refActivite.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/ref-activite', { outlets: { popup: refActivite.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

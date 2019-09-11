@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="refActeGestion">
+            <h2><span>Ref Acte Gestion</span> {{refActeGestion.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Rag Code</span></dt>
+                <dd>
+                    <span>{{refActeGestion.ragCode}}</span>
+                </dd>
+                <dt><span>Rag Lib Court</span></dt>
+                <dd>
+                    <span>{{refActeGestion.ragLibCourt}}</span>
+                </dd>
+                <dt><span>Rag Lib Long</span></dt>
+                <dd>
+                    <span>{{refActeGestion.ragLibLong}}</span>
+                </dd>
+                <dt><span>Rag Comm</span></dt>
+                <dd>
+                    <span>{{refActeGestion.ragComm}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/ref-acte-gestion', refActeGestion.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

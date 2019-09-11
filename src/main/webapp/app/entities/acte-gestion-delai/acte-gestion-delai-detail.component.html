@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="acteGestionDelai">
+            <h2><span>Acte Gestion Delai</span> {{acteGestionDelai.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Rac Code</span></dt>
+                <dd>
+                    <span>{{acteGestionDelai.racCode}}</span>
+                </dd>
+                <dt><span>Rag Code</span></dt>
+                <dd>
+                    <span>{{acteGestionDelai.ragCode}}</span>
+                </dd>
+                <dt><span>Rga Code</span></dt>
+                <dd>
+                    <span>{{acteGestionDelai.rgaCode}}</span>
+                </dd>
+                <dt><span>Agd Delai</span></dt>
+                <dd>
+                    <span>{{acteGestionDelai.agdDelai}}</span>
+                </dd>
+                <dt><span>Agd Attente</span></dt>
+                <dd>
+                    <span>{{acteGestionDelai.agdAttente}}</span>
+                </dd>
+                <dt><span>Agd Comm</span></dt>
+                <dd>
+                    <span>{{acteGestionDelai.agdComm}}</span>
+                </dd>
+                <dt><span>Ref Groupe Activite</span></dt>
+                <dd>
+                    <div *ngIf="acteGestionDelai.refGroupeActivite">
+                        <a [routerLink]="['/ref-groupe-activite', acteGestionDelai.refGroupeActivite?.id, 'view']">{{acteGestionDelai.refGroupeActivite?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Ref Acte Gestion</span></dt>
+                <dd>
+                    <div *ngIf="acteGestionDelai.refActeGestion">
+                        <a [routerLink]="['/ref-acte-gestion', acteGestionDelai.refActeGestion?.id, 'view']">{{acteGestionDelai.refActeGestion?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Ref Activite</span></dt>
+                <dd>
+                    <div *ngIf="acteGestionDelai.refActivite">
+                        <a [routerLink]="['/ref-activite', acteGestionDelai.refActivite?.id, 'view']">{{acteGestionDelai.refActivite?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/acte-gestion-delai', acteGestionDelai.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
