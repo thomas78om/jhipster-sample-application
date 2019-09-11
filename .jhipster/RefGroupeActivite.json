@@ -1,0 +1,38 @@
+{
+    "name": "RefGroupeActivite",
+    "fields": [
+        {
+            "fieldName": "rgaCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rgaLibCourt",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rgaLibLong",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rgaComm",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "acteGestionDelai",
+            "otherEntityRelationshipName": "refGroupeActivite",
+            "relationshipName": "acteGestionDelai"
+        }
+    ],
+    "changelogDate": "20190911115149",
+    "entityTableName": "ref_groupe_activite",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

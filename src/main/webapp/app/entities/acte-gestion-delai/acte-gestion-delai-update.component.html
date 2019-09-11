@@ -1,0 +1,75 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-acte-gestion-delai-heading">Create or edit a Acte Gestion Delai</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_racCode">Rac Code</label>
+                    <input type="text" class="form-control" name="racCode" id="field_racCode"
+                           formControlName="racCode"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_ragCode">Rag Code</label>
+                    <input type="text" class="form-control" name="ragCode" id="field_ragCode"
+                           formControlName="ragCode"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_rgaCode">Rga Code</label>
+                    <input type="text" class="form-control" name="rgaCode" id="field_rgaCode"
+                           formControlName="rgaCode"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_agdDelai">Agd Delai</label>
+                    <input type="number" class="form-control" name="agdDelai" id="field_agdDelai"
+                           formControlName="agdDelai"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_agdAttente">Agd Attente</label>
+                    <input type="number" class="form-control" name="agdAttente" id="field_agdAttente"
+                           formControlName="agdAttente"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_agdComm">Agd Comm</label>
+                    <input type="text" class="form-control" name="agdComm" id="field_agdComm"
+                           formControlName="agdComm"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_refGroupeActivite">Ref Groupe Activite</label>
+                    <select class="form-control" id="field_refGroupeActivite" name="refGroupeActivite" formControlName="refGroupeActivite">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="refGroupeActiviteOption.id === editForm.get('refGroupeActivite').value?.id ? editForm.get('refGroupeActivite').value : refGroupeActiviteOption" *ngFor="let refGroupeActiviteOption of refgroupeactivites; trackBy: trackRefGroupeActiviteById">{{refGroupeActiviteOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_refActeGestion">Ref Acte Gestion</label>
+                    <select class="form-control" id="field_refActeGestion" name="refActeGestion" formControlName="refActeGestion">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="refActeGestionOption.id === editForm.get('refActeGestion').value?.id ? editForm.get('refActeGestion').value : refActeGestionOption" *ngFor="let refActeGestionOption of refactegestions; trackBy: trackRefActeGestionById">{{refActeGestionOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_refActivite">Ref Activite</label>
+                    <select class="form-control" id="field_refActivite" name="refActivite" formControlName="refActivite">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="refActiviteOption.id === editForm.get('refActivite').value?.id ? editForm.get('refActivite').value : refActiviteOption" *ngFor="let refActiviteOption of refactivites; trackBy: trackRefActiviteById">{{refActiviteOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

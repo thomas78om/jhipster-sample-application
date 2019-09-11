@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-ref-acte-gestion-heading">Create or edit a Ref Acte Gestion</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_ragCode">Rag Code</label>
+                    <input type="text" class="form-control" name="ragCode" id="field_ragCode"
+                           formControlName="ragCode"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_ragLibCourt">Rag Lib Court</label>
+                    <input type="text" class="form-control" name="ragLibCourt" id="field_ragLibCourt"
+                           formControlName="ragLibCourt"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_ragLibLong">Rag Lib Long</label>
+                    <input type="text" class="form-control" name="ragLibLong" id="field_ragLibLong"
+                           formControlName="ragLibLong"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_ragComm">Rag Comm</label>
+                    <input type="text" class="form-control" name="ragComm" id="field_ragComm"
+                           formControlName="ragComm"/>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

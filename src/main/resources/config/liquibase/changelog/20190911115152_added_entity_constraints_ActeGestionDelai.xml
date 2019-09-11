@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity ActeGestionDelai.
+    -->
+    <changeSet id="20190911115152-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="ref_groupe_activite_id"
+                                 baseTableName="acte_gestion_delai"
+                                 constraintName="fk_acte_gestion_delai_ref_groupe_activite_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_groupe_activite"/>
+
+        <addForeignKeyConstraint baseColumnNames="ref_acte_gestion_id"
+                                 baseTableName="acte_gestion_delai"
+                                 constraintName="fk_acte_gestion_delai_ref_acte_gestion_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_acte_gestion"/>
+
+        <addForeignKeyConstraint baseColumnNames="ref_activite_id"
+                                 baseTableName="acte_gestion_delai"
+                                 constraintName="fk_acte_gestion_delai_ref_activite_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ref_activite"/>
+
+    </changeSet>
+</databaseChangeLog>

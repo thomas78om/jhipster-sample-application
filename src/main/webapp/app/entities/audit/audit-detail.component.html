@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="audit">
+            <h2><span>Audit</span> {{audit.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Aud Id</span></dt>
+                <dd>
+                    <span>{{audit.audId}}</span>
+                </dd>
+                <dt><span>Aud Utilisateur</span></dt>
+                <dd>
+                    <span>{{audit.audUtilisateur}}</span>
+                </dd>
+                <dt><span>Aud Description</span></dt>
+                <dd>
+                    <span>{{audit.audDescription}}</span>
+                </dd>
+                <dt><span>Aud Datetime</span></dt>
+                <dd>
+                    <span>{{audit.audDatetime}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/audit', audit.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

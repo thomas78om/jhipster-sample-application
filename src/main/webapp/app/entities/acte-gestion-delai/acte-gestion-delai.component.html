@@ -1,0 +1,85 @@
+<div>
+    <h2 id="page-heading">
+        <span>Acte Gestion Delais</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-acte-gestion-delai" [routerLink]="['/acte-gestion-delai/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create a new Acte Gestion Delai
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="acteGestionDelais?.length === 0">
+        <span>No acteGestionDelais found</span>
+    </div>
+    <div class="table-responsive" *ngIf="acteGestionDelais?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Rac Code</span></th>
+            <th><span>Rag Code</span></th>
+            <th><span>Rga Code</span></th>
+            <th><span>Agd Delai</span></th>
+            <th><span>Agd Attente</span></th>
+            <th><span>Agd Comm</span></th>
+            <th><span>Ref Groupe Activite</span></th>
+            <th><span>Ref Acte Gestion</span></th>
+            <th><span>Ref Activite</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let acteGestionDelai of acteGestionDelais ;trackBy: trackId">
+                <td><a [routerLink]="['/acte-gestion-delai', acteGestionDelai.id, 'view' ]">{{acteGestionDelai.id}}</a></td>
+                <td>{{acteGestionDelai.racCode}}</td>
+                <td>{{acteGestionDelai.ragCode}}</td>
+                <td>{{acteGestionDelai.rgaCode}}</td>
+                <td>{{acteGestionDelai.agdDelai}}</td>
+                <td>{{acteGestionDelai.agdAttente}}</td>
+                <td>{{acteGestionDelai.agdComm}}</td>
+                <td>
+                    <div *ngIf="acteGestionDelai.refGroupeActivite">
+                        <a [routerLink]="['/ref-groupe-activite', acteGestionDelai.refGroupeActivite?.id, 'view' ]" >{{acteGestionDelai.refGroupeActivite?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="acteGestionDelai.refActeGestion">
+                        <a [routerLink]="['/ref-acte-gestion', acteGestionDelai.refActeGestion?.id, 'view' ]" >{{acteGestionDelai.refActeGestion?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="acteGestionDelai.refActivite">
+                        <a [routerLink]="['/ref-activite', acteGestionDelai.refActivite?.id, 'view' ]" >{{acteGestionDelai.refActivite?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/acte-gestion-delai', acteGestionDelai.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/acte-gestion-delai', acteGestionDelai.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/acte-gestion-delai', { outlets: { popup: acteGestionDelai.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

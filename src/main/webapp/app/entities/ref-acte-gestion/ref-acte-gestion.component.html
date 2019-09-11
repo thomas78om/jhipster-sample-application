@@ -1,0 +1,63 @@
+<div>
+    <h2 id="page-heading">
+        <span>Ref Acte Gestions</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-ref-acte-gestion" [routerLink]="['/ref-acte-gestion/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create a new Ref Acte Gestion
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="refActeGestions?.length === 0">
+        <span>No refActeGestions found</span>
+    </div>
+    <div class="table-responsive" *ngIf="refActeGestions?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Rag Code</span></th>
+            <th><span>Rag Lib Court</span></th>
+            <th><span>Rag Lib Long</span></th>
+            <th><span>Rag Comm</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let refActeGestion of refActeGestions ;trackBy: trackId">
+                <td><a [routerLink]="['/ref-acte-gestion', refActeGestion.id, 'view' ]">{{refActeGestion.id}}</a></td>
+                <td>{{refActeGestion.ragCode}}</td>
+                <td>{{refActeGestion.ragLibCourt}}</td>
+                <td>{{refActeGestion.ragLibLong}}</td>
+                <td>{{refActeGestion.ragComm}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/ref-acte-gestion', refActeGestion.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/ref-acte-gestion', refActeGestion.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/ref-acte-gestion', { outlets: { popup: refActeGestion.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

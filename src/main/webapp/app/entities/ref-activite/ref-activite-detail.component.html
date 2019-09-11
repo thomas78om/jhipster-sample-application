@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="refActivite">
+            <h2><span>Ref Activite</span> {{refActivite.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Rac Code</span></dt>
+                <dd>
+                    <span>{{refActivite.racCode}}</span>
+                </dd>
+                <dt><span>Rac Lib Court</span></dt>
+                <dd>
+                    <span>{{refActivite.racLibCourt}}</span>
+                </dd>
+                <dt><span>Rac Lib Long</span></dt>
+                <dd>
+                    <span>{{refActivite.racLibLong}}</span>
+                </dd>
+                <dt><span>Rac Comm</span></dt>
+                <dd>
+                    <span>{{refActivite.racComm}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/ref-activite', refActivite.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

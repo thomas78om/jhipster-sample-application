@@ -1,0 +1,59 @@
+<div>
+    <h2 id="page-heading">
+        <span>Param Exports</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-param-export" [routerLink]="['/param-export/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create a new Param Export
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="paramExports?.length === 0">
+        <span>No paramExports found</span>
+    </div>
+    <div class="table-responsive" *ngIf="paramExports?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Pex Publish</span></th>
+            <th><span>Pex Dtlastexport</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let paramExport of paramExports ;trackBy: trackId">
+                <td><a [routerLink]="['/param-export', paramExport.id, 'view' ]">{{paramExport.id}}</a></td>
+                <td>{{paramExport.pexPublish}}</td>
+                <td>{{paramExport.pexDtlastexport | date:'mediumDate'}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/param-export', paramExport.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/param-export', paramExport.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/param-export', { outlets: { popup: paramExport.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
